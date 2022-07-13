@@ -201,6 +201,12 @@ CUDA_VISIBLE_DEVICES="0" python tools/torch2onnx.py configs/resnet_ctc.py checkp
 4. Inference SDK
 
   You can refer to [FlexInfer](https://github.com/Media-Smart/flexinfer) for details.
+  
+Further Studies on this project  
+
+
+
+
 
 ## Citation
 
