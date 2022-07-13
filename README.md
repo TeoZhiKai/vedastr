@@ -205,7 +205,7 @@ CUDA_VISIBLE_DEVICES="0" python tools/torch2onnx.py configs/resnet_ctc.py checkp
 ## Further Studies on this project   
 ![DiagramExModel](https://user-images.githubusercontent.com/73381439/178708995-a667b939-0503-4657-8ded-ac55e4ea66cd.png)
 | MODEL | CUTE80 | IC03 | IC13_1015 | IC15_2077 | IIIII5K_3000 | SVT | SVTP | AVERAGE |  
-| ---- | ---- | ---- | ---- | ---- | ----| ---- | ---- | ---- | ---- |  
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |  
 | Experimental_Model | 65.28 | 92.5 | 88.87 | 67.69 | 84.47 | 83.62 | 75.66 | 80.35 |
 
 | First Header  | Second Header |
