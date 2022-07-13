@@ -7,7 +7,7 @@ sensitive = False
 character = 'abcdefghijklmnopqrstuvwxyz0123456789'
 batch_max_length = 25
 
-F = 20
+F = 20             # Fiducial point
 hidden_dim = 256
 norm_cfg = dict(type='BN')
 num_class = len(character) + 2
@@ -202,17 +202,17 @@ test_dataset_params = dict(
     character=character,
 )
 
-data_root = '../../../../dataset/str/data/data_lmdb_release/'
-
+#data_root = '../../../../dataset/str/data/data_lmdb_release/'
+data_root = 'D:/FYPtesting/vedastr/vedastr/data/data_lmdb_release/'
 ###############################################################################
 # 3. test
 batch_size = 192
 
 # data
 test_root = data_root + 'evaluation/'
-test_folder_names = ['IC15_2077']
-# test_folder_names = ['CUTE80', 'IC03_867', 'IC13_1015', 'IC15_2077',
-#                      'IIIT5k_3000', 'SVT', 'SVTP']
+#test_folder_names = ['IC15_2077']
+test_folder_names = ['CUTE80', 'IC03_867', 'IC13_1015', 'IC15_2077',
+                     'IIIT5k_3000', 'SVT', 'SVTP']
 test_dataset = [dict(type='LmdbDataset', root=test_root + f_name,
                      **test_dataset_params) for f_name in test_folder_names]
 
@@ -221,7 +221,7 @@ test = dict(
         dataloader=dict(
             type='DataLoader',
             batch_size=batch_size,
-            num_workers=4,
+            num_workers=0,
             shuffle=False,
         ),
         dataset=test_dataset,
@@ -273,7 +273,7 @@ train = dict(
             dataloader=dict(
                 type='DataLoader',
                 batch_size=batch_size,
-                num_workers=4,
+                num_workers=0,
             ),
             sampler=dict(
                 type='BalanceSampler',
@@ -302,7 +302,7 @@ train = dict(
             dataloader=dict(
                 type='DataLoader',
                 batch_size=batch_size,
-                num_workers=4,
+                num_workers=0,
                 shuffle=False,
             ),
             dataset=valid_dataset,
@@ -319,5 +319,6 @@ train = dict(
     trainval_ratio=2000,
     snapshot_interval=20000,
     save_best=True,
-    resume=None,
+    #resume=None,
+    resume=dict(checkpoint='D:/FYPtesting/vedastr/vedastr/workdir/tps_resnet_bilstm_attn/best_acc.pth')
 )

@@ -202,12 +202,13 @@ test_dataset_params = dict(
     character=test_character,
 )
 
-data_root = '../../../../dataset/str/data/data_lmdb_release/'
-
+#data_root = '../../../../dataset/str/data/data_lmdb_release/'
+#data_root = '../../../../data/data_lmdb_release/'
+data_root = 'D:/FYPtesting/vedastr/vedastr/data/data_lmdb_release/'
 ###############################################################################
 # 3. test
 
-batch_size = 256
+batch_size = 64
 
 # data
 test_root = data_root + 'evaluation/'
@@ -221,7 +222,7 @@ test = dict(
         dataloader=dict(
             type='DataLoader',
             batch_size=batch_size,
-            num_workers=4,
+            num_workers=0,
             shuffle=False,
         ),
         dataset=test_dataset,
@@ -278,7 +279,7 @@ train = dict(
             dataloader=dict(
                 type='DataLoader',
                 batch_size=batch_size,
-                num_workers=4,
+                num_workers=0,
             ),
             sampler=dict(
                 type='BalanceSampler',
@@ -307,7 +308,7 @@ train = dict(
             dataloader=dict(
                 type='DataLoader',
                 batch_size=batch_size,
-                num_workers=4,
+                num_workers=0,
                 shuffle=False,
             ),
             dataset=valid_dataset,
@@ -321,9 +322,11 @@ train = dict(
                       warmup_epochs=0.1,
                       ),
     max_epochs=max_epochs,
-    log_interval=10,
+    log_interval=50,
     trainval_ratio=2000,
-    snapshot_interval=20000,
+    snapshot_interval=10000,
     save_best=True,
-    resume=None,
+    #resume=None,
+    #resume=dict(checkpoint='D:/FYPtesting/vedastr/vedastr/checkpoint/small_satrn.pth')
+    resume=dict(checkpoint='D:/FYPtesting/vedastr/vedastr/workdir/small_satrn/iter20000.pth')                # for continue training from the previous checkpoint
 )

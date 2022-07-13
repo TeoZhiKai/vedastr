@@ -1,0 +1,61 @@
+Train
+python tools/train.py configs/small_satrn.py "0" 
+python tools/train.py configs/tps_resnet_bilstm_attn.py "0" 
+python tools/train.py configs/small_satrn_modified.py "0" 
+python tools/train.py configs/small_satrn_modifiedV2.py "0" 
+python tools/train.py configs/small_satrn_modifiedV3.py "0"
+python tools/train.py configs/small_satrn_modifiedV4.py "0"
+python tools/train.py configs/master_test.py "0"   
+python tools/train.py configs/tuning_satrnV2.py "0"
+python tools/train.py configs/tuning_satrnV3.py "0"
+python tools/train.py configs/tuning_satrnV4.py "0"
+python tools/train.py configs/small_satrn_modifiedV5.py "0"
+
+resume training-> change configs/small_satrn line 330 resume=dict(checkpoint='') 
+
+Evaluate (testing on dataset)
+python tools/test.py configs/small_satrn.py D:/FYPtesting/vedastr/vedastr/checkpoint/small_satrn.pth "0" 
+python tools/test.py configs/small_satrn.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn\best_acc.pth "0" 
+python tools/test.py configs/tps_resnet_bilstm_attn.py D:\FYPtesting\vedastr\vedastr\checkpoint\tps_resnet_bilstm_attn.pth "0" 
+python tools/test.py configs/tps_resnet_bilstm_attn.py D:\FYPtesting\vedastr\vedastr\workdir\tps_resnet_bilstm_attn\best_acc.pth "0" 
+python tools/test.py configs/small_satrn_modified.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn_modified\best_acc.pth "0"
+python tools/test.py configs/small_satrn_modifiedV2.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn_modifiedV2\best_acc.pth "0"
+python tools/test.py configs/small_satrn_modifiedV4.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn_modifiedV4\best_acc.pth "0"
+python tools/test.py configs/tuning_satrnV2.py D:\FYPtesting\vedastr\vedastr\workdir\tuning_satrnV2\best_acc.pth "0"
+python tools/test.py configs/tuning_satrnV3.py D:\FYPtesting\vedastr\vedastr\workdir\tuning_satrnV3\best_acc.pth "0"
+python tools/test.py configs/tuning_satrnV4.py D:\FYPtesting\vedastr\vedastr\workdir\tuning_satrnV4\best_acc.pth "0"
+python tools/test.py configs/tuning_satrnV4.py D:\FYPtesting\vedastr\vedastr\workdir\tuning_satrnV4\best_acc.pth "0"
+python tools/test.py configs/small_satrn_modifiedV5.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn_modifiedV5\best_acc.pth "0"
+
+interferce (raw image)
+python tools/inference.py configs/small_satrn.py D:/FYPtesting/vedastr/vedastr/checkpoint/small_satrn.pth D:\FYPtesting\vedastr\vedastr\test_infer_image\word_1.png "0"
+python tools/inference.py configs/small_satrn_modifiedV4.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn_modifiedV4\best_acc_86.pth D:\FYPtesting\vedastr\vedastr\test_infer_image\word_1.png "0"
+
+
+deployment(OCR)
+python ocr.py configs/small_satrn_modifiedV4.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn_modifiedV4\best_acc_86.pth D:/FYPtesting/vedastr/OCR/input_img/orchard.jpg "0"
+python ocr1.py configs/small_satrn_modifiedV4.py D:\FYPtesting\vedastr\vedastr\workdir\small_satrn_modifiedV4\best_acc_86.pth D:/FYPtesting/vedastr/OCR/input_img/sign.jpg "0"
+
+
+
+
+
+The dataset is from file : data_lmdb_release.zip
+https://github.com/clovaai/deep-text-recognition-benchmark
+
+
+SATRN Training: 
+20211209_122731
+20211209_193031
+20211210_101732
+20211211_105230 -> maybe reach convergence 
+20211212_095457
+20211212_143508
+(try plot the graph) done
+20211213_122756 -> Evaluation 
+* the batch size have been change, maybe why the low acc
+
+
+small_satrn_modifiedV2 
+train_sensitive= False
+collectionBlock from_layer=c2 ? 

@@ -13,9 +13,9 @@ from vedastr.utils import Config
 def parse_args():
     parser = argparse.ArgumentParser(description='Inference')
     parser.add_argument('config', type=str, help='Config file path')
-    parser.add_argument('checkpoint', type=str, help='Checkpoint file path')
-    parser.add_argument('image', type=str, help='input image path')
-    parser.add_argument('gpus', type=str, help='target gpus')
+    parser.add_argument('checkpoint', type=str, help='Checkpoint file path', default='vedastr/vedastr/checkpoint/small_satrn.pth')
+    parser.add_argument('image', type=str, help='input image path', default='vedastr/vedastr/test_infer_image/word_1.png')
+    parser.add_argument('gpus', type=str, help='target gpus',default='0')
     args = parser.parse_args()
 
     return args
@@ -23,7 +23,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-
+    print(args)
     cfg_path = args.config
     cfg = Config.fromfile(cfg_path)
 
@@ -47,3 +47,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+#python tools/inference.py configs/small_satrn.py D:/FYPtesting/vedastr/vedastr/checkpoint/small_satrn.pth D:/FYPtesting/vedastr/vedastr/test_infer_image "0"
